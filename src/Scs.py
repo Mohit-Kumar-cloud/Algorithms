@@ -124,5 +124,5 @@ if __name__ == "__main__":
 	x = "mohit"
 	y = "sham"
 
-	print(scs_matrix(x, y)) 
+	print(scs(x, y)) 
 
