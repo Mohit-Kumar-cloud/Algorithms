@@ -649,42 +649,43 @@ def Word_break():
 root = Tk()
 option=StringVar()
 option.set(optionlist[0])
-lbl1= Label(root,text="Dynamic Algorithms",width=1000)
+lbl1= Label(root,text="Dynamic Algorithms",width=1000,fg='red')
 lbl1['font']=("Arial",20)
 lbl1.pack()
-btn=Button(root,text="Longest Common Subsequence",command=Lcs)
+btn=Button(root,text="Longest Common Subsequence",command=Lcs,fg='red',bg='grey')
 btn.pack(fill=X)
 
-btn1=Button(root,text="Shortest Common Supersequence",command=Scs)
+btn1=Button(root,text="Shortest Common Supersequence",command=Scs,fg='red',bg='grey')
 btn1.pack(fill=X)
 
-btn2=Button(root,text="Levenshtein Distance / Edit Distance",command=Edit_distance)
+btn2=Button(root,text="Levenshtein Distance / Edit Distance",command=Edit_distance,fg='red',bg='grey')
 btn2.pack(fill=X)
 
-btn3=Button(root,text="Longest Increasing Subsequence",command=Lis)
+btn3=Button(root,text="Longest Increasing Subsequence",command=Lis,fg='red',bg='grey')
 btn3.pack(fill=X)
 
-btn4=Button(root,text="Matrix Chain Multiplication",command=Mcm)
+btn4=Button(root,text="Matrix Chain Multiplication",command=Mcm,fg='red',bg='grey')
 btn4.pack(fill=X)
 
-btn5=Button(root,text="0-1-Knapsack",command=Knapsack)
+btn5=Button(root,text="0-1-Knapsack",command=Knapsack,fg='red',bg='grey')
 btn5.pack(fill=X)
 
-btn6=Button(root,text="Partition Problem",command=Partition)
+btn6=Button(root,text="Partition Problem",command=Partition,fg='red',bg='grey')
 btn6.pack(fill=X)
 
-btn7=Button(root,text="Rod Cutting Problem",command=Rodcut)
+btn7=Button(root,text="Rod Cutting Problem",command=Rodcut,fg='red',bg='grey')
 btn7.pack(fill=X)
 
-btn8=Button(root,text="Coin Change Problem",command=coin_change)
+btn8=Button(root,text="Coin Change Problem",command=coin_change,fg='red',bg='grey')
 btn8.pack(fill=X)
 
-btn9=Button(root,text="Word Break Problem",command=Word_break)
+btn9=Button(root,text="Word Break Problem",command=Word_break,fg='red',bg='grey')
 btn9.pack(fill=X)
 
 
-Button(root,text="Exit",width=25,command=lambda:root.destroy()).pack()
+Button(root,text="Exit",width=25,fg='red',bg='grey',command=lambda:root.destroy()).pack()
 
 root.geometry("700x700")
 root.title("Algorithm Project")
+root['bg']='black'
 root.mainloop()
