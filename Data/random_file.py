@@ -73,9 +73,9 @@ def get_file_1(string,i):
 
         if os.path.exists("Data\\"+str(string)+"\\"+str(i)+".txt"):
                 with open("Data\\"+str(string)+"\\"+str(i)+".txt","r") as f:
-                    for line in f:
-                        line=line.strip()
-                    return line
+                    x=[]
+                    x=json.load(f)
+                    return x
         else:
             generate_file_1(string)
             return get_file_1(string,i)
@@ -92,13 +92,14 @@ def generate_file_2(string):
     return
 def get_file_2(string,i):
     if os.path.exists("Data\\"+str(string)):
-        lis=[]
         if os.path.exists("Data\\"+str(string)+"\\"+str(i)+".txt"):
             with open("Data\\"+str(string)+"\\"+str(i)+".txt","r") as f:
-                for line in f:
-                    line=line.strip()
-                    lis.append(line)
-                return lis
+                y=f.readline()
+                y=y.strip()
+                z=[]
+                z.append(y)
+                x=json.load(f)
+                return z+x
         else:
             generate_file_2(string)
             return get_file_2(string,i)
@@ -124,9 +125,8 @@ def get_file_3(string,i):
     if os.path.exists("Data\\"+str(string)):
         if os.path.exists("Data\\"+str(string)+"\\"+str(i)+".txt"):
             with open("Data\\"+str(string)+"\\"+str(i)+".txt","r") as f:
-                for line in f:
-                    line=line.strip()
-            return line
+                x=json.load(f)
+                return x
         else:
             generate_file_3(string)
             return get_file_3(string,i)

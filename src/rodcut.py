@@ -10,7 +10,7 @@ def cutRod(price,n,length):
 	# the last entry from the table 
     for i in range(1, n+1): 
         max_val = INT_MIN 
-        for j in length[0:i]:
+        for j in length[:i]:
             if j<=i:
                 k=length.index(j) 
                 max_val = max(max_val, price[k] + val[i-k-1]) 
@@ -20,8 +20,8 @@ def cutRod(price,n,length):
 
 # Driver program to test above functions 
 if __name__ == "__main__":
-    arr = [1 ,6,18,22,28]
-    length=[1,2,5,6,7]
-    size = 11
+    arr = [1,2,3]
+    length=[1,2,3]
+    size = 3
     print("Maximum Obtainable Value is " + str(cutRod(arr,size,length))) 
 

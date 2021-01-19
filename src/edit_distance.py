@@ -3,8 +3,8 @@
 
 
 def edit_distance(x, y):
-	m=len(str1)
-	n=len(str2)
+	m=len(x)
+	n=len(y)
 	# Create a table to store results of subproblems
 	ed = [[0 for k in range(n + 1)] for k in range(m + 1)]
 

@@ -1,46 +1,107 @@
+from io import StringIO
 import sys
-# Dynamic Programming Python implementation of Matrix 
-# Chain Multiplication. See the Cormen book for details 
-# of the following algorithm   
+# A space optimized python3 program to
+# print optimal parenthesization in 
+# matrix chain multiplication.
+
+def printParenthesis(m, j, i=0 ):
+
+	# Displaying the parenthesis.
+	if j == i:
+
+		# The first matrix is printed as 
+		# 'A', next as 'B', and so on
+		print(chr(65 + j), end = "")
+		return;
+	else:
+		print("(", end = "")
+
+		# Passing (m, k, i) instead of (s, i, k)
+		printParenthesis(m, m[j][i] - 1, i)
+
+		# (m, j, k+1) instead of (s, k+1, j)
+		printParenthesis(m, j, m[j][i])
+		print (")", end = "" )
 
 
-def MatrixChainOrder(p): 
-	# For simplicity of the program, 
-	# one extra row and one 
-	# extra column are allocated in m[][]. 
-	# 0th row and 0th 
-	# column of m[][] are not used
-    n=len(p) 
-    m = [[0 for x in range(n)] for x in range(n)] 
-
-	# m[i, j] = Minimum number of scalar 
-	# multiplications needed 
-	# to compute the matrix A[i]A[i + 1]...A[j] = 
-	# A[i..j] where 
-	# dimension of A[i] is p[i-1] x p[i] 
-
-	# cost is zero when multiplying one matrix. 
-    for i in range(1, n): 
-        m[i][i] = 0
-
-	# L is chain length. 
-    for L in range(2, n): 
-        for i in range(1, n-L + 1): 
-            j = i + L-1
-            m[i][j] = sys.maxsize
-            for k in range(i, j): 
-
-				# q = cost / scalar multiplications 
-                q = m[i][k] + m[k + 1][j] + p[i-1]*p[k]*p[j] 
-                if q < m[i][j]: 
-                    m[i][j] = q 
-
-    return m[1][n-1] 
+def matrixChainOrderPar(m,j,i=0):
+    old_stdout= sys.stdout
+    result= StringIO()
+    sys.stdout=result
+    printParenthesis(m, j, i)
+    sys.stdout= old_stdout
+    r=result.getvalue()
+    return r
+    
 
 
-# Driver code
-if __name__ == "__main__": 
-    arr = [2, 3, 5, 2,4,3]  
-    print("Minimum number of multiplications is " +
-	str(MatrixChainOrder(arr))) 
+def matrixChainOrder(p):
+    n=len(p)-1
+
+	# Creating a matrix of order
+	# n*n in the memory.
+    m = [[0 for i in range(n)] 
+            for i in range (n)]
+
+    for l in range (2, n + 1):
+        for i in range (n - l + 1):
+            j = i + l - 1
+
+			# Initializing infinity value.
+            m[i][j] = float('Inf')
+            for k in range (i, j):
+                q = (m[i][k] + m[k + 1][j] +
+                    (p[i] * p[k + 1] * p[j + 1]))
+                if (q < m[i][j]):
+                    m[i][j] = q
+
+					# Storing k value in opposite index.
+                    m[j][i] = k + 1
+    return m
+
+
+def matrixChainOrderCost(p):
+    n=len(p)-1
+
+	# Creating a matrix of order
+	# n*n in the memory.
+    m = [[0 for i in range(n)] 
+            for i in range (n)]
+
+    for l in range (2, n + 1):
+        for i in range (n - l + 1):
+            j = i + l - 1
+
+			# Initializing infinity value.
+            m[i][j] = float('Inf')
+            for k in range (i, j):
+                q = (m[i][k] + m[k + 1][j] +
+                    (p[i] * p[k + 1] * p[j + 1]));
+                if (q < m[i][j]):
+                    m[i][j] = q
+
+					# Storing k value in opposite index.
+                    m[j][i] = k + 1
+    return m[0][n-1]
+
+# Driver Code
+if __name__ == "__main__":
+    arr = [40, 20, 30, 10, 30]
+
+
+    m = matrixChainOrder(arr) # Forming the matrix m
+    j=len(arr)-1
+
+    print("Optimal Parenthesization is: "+ matrixChainOrderPar(m,j-1))
+
+# Passing the index of the bottom left
+# corner of the 'm' matrix instead of
+# passing the index of the top right
+# corner of the 's' matrix as we used
+# to do earlier. Everything is just opposite
+# as we are using the bottom half of the
+# matrix so assume everything opposite even
+# the index, take m[j][i].
+    print("\nOptimal Cost is :", matrixChainOrderCost(arr))
+
 
