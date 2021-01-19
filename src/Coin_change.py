@@ -1,6 +1,6 @@
 # Dynamic Programming Python implementation of Coin 
 # Change problem 
-def count(S, n): 
+def count(S, n=160): 
 
 	# table[i] will be storing the number of solutions for 
 	# value i. We need n+1 rows as the table is constructed 

@@ -28,265 +28,116 @@ def random_string_generator():
     return dictionary
 
 
-def generate_lcs():
-    with open("Data\lcs.txt","w") as f:
-        for i in range(10):
+def generate_file(string):
+    for i in range(10):
+        with open("Data\\"+str(string)+"\\"+str(i)+".txt","w") as f:
             x = random_letter_generator("mohit")
             y = random_letter_generator("mohit")
             f.write(x)
             f.write("\n")
             f.write(y)
-            if i != 9:
-                f.write("\n")
     return
 
 
-def get_lcs():
-    if os.path.exists("Data\lcs.txt"):
-        with open("Data\lcs.txt","r") as f:
-            x=[]
-            y=[]
-            z=[]
-            count=0
-            for line in f:
-                line=line.strip()
-                if count %2 == 0:
-                    x.append(line)
-                else:
-                    y.append(line)
-        z=x+y
-        return z
+def get_file(string,i):
+    x=[]
+    y=[]
+    z=[]
+    if os.path.exists("Data\\"+str(string)):
+
+        if os.path.exists("Data\\"+str(string)+"\\"+str(i)+".txt"):
+            with open("Data\\"+str(string)+"\\"+str(i)+".txt","r") as f:
+                for line in f:
+                    line=line.strip()
+                    x.append(line)     
+        else:
+            generate_file(string)
+            return get_file(string,i)
     else:
-        generate_lcs()
-        return get_lcs()    
+        os.mkdir("Data\\"+str(string))
+        return get_file(string)
+    return x     
 
 
-def generate_scs():
-    with open("Data\scs.txt","w") as f:
-        for i in range(10):
-            x = random_letter_generator("mohit")
-            y = random_letter_generator("mohit")
-            f.write(x)
-            f.write("\n")
-            f.write(y)
-            if i != 9:
-                f.write("\n")
-    return
 
-
-def get_scs():
-    if os.path.exists("Data\scs.txt"):
-        with open("Data\scs.txt","r") as f:
-            x=[]
-            y=[]
-            z=[]
-            count=0
-            for line in f:
-                line=line.strip()
-                if count %2 == 0:
-                    x.append(line)
-                else:
-                    y.append(line)
-        z=x+y
-        return z
-    else:
-        generate_scs()
-        return get_scs()
-
-
-def generate_edt():
-    with open("Data\edit_distance.txt","w") as f:
-        for i in range(10):
-            x = random_letter_generator("mohit")
-            y = random_letter_generator("mohit")
-            f.write(x)
-            f.write("\n")
-            f.write(y)
-            if i != 9:
-                f.write("\n")
-    return
-
-
-def get_edt():
-    if os.path.exists("Data\edit_distance.txt"):
-        with open("Data\edit_distance.txt","r") as f:
-            x=[]
-            y=[]
-            z=[]
-            count=0
-            for line in f:
-                line=line.strip()
-                if count %2 == 0:
-                    x.append(line)
-                else:
-                    y.append(line)
-        z=x+y
-        return z
-    else:
-        generate_edt()
-        return get_edt() 
-
-
-def generate_lis():
-    with open("Data\lis.txt","w") as f:
-        for i in range(10):
+def generate_file_1(string):
+    for i in range(10):
+        with open("Data\\"+str(string)+"\\"+str(i)+".txt","w") as f:
             x = random_num_generator()
             json.dump(x,f)
-            if i != 9:
-                f.write("\n")
     return
 
 
-def get_lis():
-    if os.path.exists("Data\lis.txt"):
+def get_file_1(string,i):
+    if os.path.exists("Data\\"+str(string)):
+
+        if os.path.exists("Data\\"+str(string)+"\\"+str(i)+".txt"):
+                with open("Data\\"+str(string)+"\\"+str(i)+".txt","r") as f:
+                    for line in f:
+                        line=line.strip()
+                    return line
+        else:
+            generate_file_1(string)
+            return get_file_1(string,i)
+    else:
+        os.mkdir("Data\\"+str(string))
+        return get_file(string)
+
+def generate_file_2(string):
+    for i in range(10):
+        with open("Data\\"+str(string)+"\\"+str(i)+".txt","w") as f:
+            f.write("160\n")
+            x = random_set_generator()
+            json.dump(x,f)
+    return
+def get_file_2(string,i):
+    if os.path.exists("Data\\"+str(string)):
         lis=[]
-        with open("Data\lis.txt","r") as f:
-            for line in f:
-                line=line.strip()
-                lis.append(line)
-            return lis
+        if os.path.exists("Data\\"+str(string)+"\\"+str(i)+".txt"):
+            with open("Data\\"+str(string)+"\\"+str(i)+".txt","r") as f:
+                for line in f:
+                    line=line.strip()
+                    lis.append(line)
+                return lis
+        else:
+            generate_file_2(string)
+            return get_file_2(string,i)
     else:
-        generate_lis()
-        return get_lis()
+        os.mkdir("Data\\"+str(string))
+        return get_file_2(string)
 
 
-def generate_mcm():
-    with open("Data\mcm.txt","w") as f:
+
+def generate_file_3(string):
+    if os.path.exists("Data\\"+str(string)):
         for i in range(10):
-            x = random_num_generator()
-            json.dump(x,f)
-            if i != 9:
-                f.write("\n")
-    return
-
-
-def get_mcm():
-    if os.path.exists("Data\mcm.txt"):
-        mcm=[]
-        with open("Data\mcm.txt","r") as f:
-            for line in f:
-                line=line.strip()
-                mcm.append(line)
-            return mcm
+            with open("Data\\"+str(string)+"\\"+str(i)+".txt","w") as f:
+                x = random_string_generator()
+                json.dump(x,f)
+        return
     else:
-        generate_mcm()
-        return get_mcm()
+        os.mkdir("Data\\"+str(string))
+        return generate_file_3(string)
 
 
-def generate_knapsack():
-    with open("Data\knapsack.txt","w") as f:
-        for i in range(10):
-            x = random_set_generator()
-            json.dump(x,f)
-            if i != 9:
-                f.write("\n")
-    return
-def get_knapsack():
-    if os.path.exists("Data\knapsack.txt"):
-        knapsack=[]
-        with open("Data\knapsack.txt","r") as f:
-            for line in f:
-                line=line.strip()
-                knapsack.append(line)
-            return knapsack
+def get_file_3(string,i):
+    if os.path.exists("Data\\"+str(string)):
+        if os.path.exists("Data\\"+str(string)+"\\"+str(i)+".txt"):
+            with open("Data\\"+str(string)+"\\"+str(i)+".txt","r") as f:
+                for line in f:
+                    line=line.strip()
+            return line
+        else:
+            generate_file_3(string)
+            return get_file_3(string,i)
     else:
-        generate_knapsack()
-        return get_knapsack()
-
-def generate_partition():
-    with open("Data\partition.txt","w") as f:
-        for i in range(10):
-            x = random_num_generator()
-            json.dump(x,f)
-            if i != 9:
-                f.write("\n")
-    return
-
-
-def get_partition():
-    if os.path.exists("Data\partition.txt"):
-        partion=[]
-        with open("Data\partition.txt","r") as f:
-            for line in f:
-                line=line.strip()
-                partion.append(line)
-            return partion
-    else:
-        generate_partition()
-        return get_partition()
-
-
-
-def generate_rodcut():
-    with open("Data\\rodcut.txt","w") as f:
-        for i in range(10):
-            x = random_set_generator()
-            json.dump(x,f)
-            if i != 9:
-                f.write("\n")
-    return
-def get_rodcut():
-    if os.path.exists("Data\\rodcut.txt"):
-        rodcut=[]
-        with open("Data\\rodcut.txt","r") as f:
-            for line in f:
-                line=line.strip()
-                rodcut.append(line)
-            return rodcut
-    else:
-        generate_rodcut()
-        return get_rodcut()
-
-def generate_coin_change():
-    with open("Data\coin_change.txt","w") as f:
-        for i in range(10):
-            x = random_num_generator()
-            json.dump(x,f)
-            if i != 9:
-                f.write("\n")
-    return
-
-
-def get_coin_change():
-    if os.path.exists("Data\coin_change.txt"):
-        coin_change=[]
-        with open("Data\coin_change.txt","r") as f:
-            for line in f:
-                line=line.strip()
-                coin_change.append(line)
-            return coin_change
-    else:
-        generate_coin_change()
-        return get_coin_change()
-
-
-
-def generate_word_break():
-    with open("Data\word_break.txt","w") as f:
-        for i in range(10):
-            x = random_string_generator()
-            json.dump(x,f)
-            if i != 9:
-                f.write("\n")
-    return
-
-
-def get_word_break():
-    if os.path.exists("Data\word_break.txt"):
-        word_break=[]
-        with open("Data\word_break.txt","r") as f:
-            for line in f:
-                line=line.strip()
-                word_break.append(line)
-            return word_break
-    else:
-        generate_word_break()
-        return get_word_break()
-
-
+        os.mkdir("Data\\"+str(string))
+        return get_file_3(string)
 
 if __name__ == "__main__":
-  print(random_letter_generator("mohit"))
-  r=random_string_generator()
-  z=get_word_break()
-  print(z)
+  #print(random_letter_generator("mohit"))
+  r=get_file_1("coin_change",0)
+  z=get_file("edit_distance",0)
+  y=get_file_2("rodcut",0)
+  x=get_file_3("word_break",0)
+  print(x)

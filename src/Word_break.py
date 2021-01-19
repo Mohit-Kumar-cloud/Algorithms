@@ -1,6 +1,6 @@
 # Function to determine if can be segmented into a space-separated
 # sequence of one or more dictionary words
-def wordBreak(dictionary, string):
+def wordBreak(dictionary, string="mohitkumar"):
  
     # return true if we have reached the end of the String,
     if not string:
