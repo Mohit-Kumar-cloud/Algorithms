@@ -14,6 +14,10 @@ import src.Scs
 import src.Word_break
 import src.Coin_change
 
+front='red'
+back='grey'
+design='black'
+
 optionlist=['file1','file2','file3','file4','file5','file6','file7','file8','file9','file10']
 window1=""
 window2=""
@@ -47,7 +51,7 @@ def lcs_result():
     r1 ="Length of Lcs is:" + str(src.Lcs.lcs_len(a,b))
     r2= "Lcs is :"+"".join (src.Lcs.lcs(a,b))
     w=Text(window1,height=10,width=40)
-    w.grid(row=5,column=0)
+    w.grid(row=6,column=0,sticky='s')
     w.insert(END,r1)
     w.insert(END,"\n")
     w.insert(END,r2)
@@ -55,12 +59,16 @@ def lcs_result():
 def Lcs():
     global window1
     window1 = Toplevel(root)
+    window1['bg']=design
     window1.geometry("500x500")
     window1.title("Longest Common Subsequence")
-    lbl = Label(window1,text="Longest Common Subsequence")
+    lbl = Label(window1,text="Longest Common Subsequence",fg=front,bg=design)
+    lbl2 = Label(window1,text="X:",fg=front,bg=design) 
+    lbl3 = Label(window1,text="Y:",fg=front,bg=design)
     lbl['font']=("Arial",20)
-    lbl2 = Label(window1,text="X:") 
-    lbl3 = Label(window1,text="Y:")
+    lbl2['font']=("Arial",10)
+    lbl3['font']=("Arial",10)
+
     lbl.grid(row=0,column=1,sticky='w')
     lbl2.grid(row=1,column=0)
     lbl3.grid(row=2,column=0)
@@ -71,6 +79,8 @@ def Lcs():
     entry1.grid(row=1,column=1,sticky='w')
     entry2.grid(row=2,column=1,sticky='w')
     o=OptionMenu(window1,option,*optionlist)
+    o["menu"].config(bd=0)
+    o["highlightthickness"]=0
     o.grid(row=3,column=0)
     btn11=Button(window1,text="Generate Random Files",command=lambda:Data.random_file.generate_file("lcs"))
     btn11.grid(row=4,column=0,)
@@ -79,7 +89,7 @@ def Lcs():
     btn10=Button(window1,text="Submit",command=lcs_result)
     btn10.grid(row=2,column=1)
     btn2=Button(window1,text="Close Me",command=lambda:window1.destroy())
-    btn2.grid(row=5,column=1)
+    btn2.grid(row=4,column=1)
     
     
 
@@ -103,7 +113,7 @@ def scs_result():
     r1 ="Length of Scs is:" + str(src.Scs.Scs_len(a,b))
     r2= "scs is :"+"".join (src.Scs.scs(a,b))
     w=Text(window2,height=10,width=40)
-    w.grid(row=5,column=0)
+    w.grid(row=6,column=0,sticky='s')
     w.insert(END,r1)
     w.insert(END,"\n")
     w.insert(END,r2)
@@ -111,12 +121,15 @@ def scs_result():
 def Scs():
     global window2
     window2 = Toplevel(root)
+    window2['bg']=design
     window2.geometry("500x500")
     window2.title("Shortest Common Supersequence")
-    lbl = Label(window2,text="Shortest Common Supersequence")
+    lbl = Label(window2,text="Shortest Common Supersequence",fg=front,bg=design)
     lbl['font']=("Arial",20)
-    lbl2 = Label(window2,text="X:") 
-    lbl3 = Label(window2,text="Y:")
+    lbl2 = Label(window2,text="X:",fg=front,bg=design) 
+    lbl3 = Label(window2,text="Y:",fg=front,bg=design)
+    lbl2['font']=("Arial",10)
+    lbl3['font']=("Arial",10)
     lbl.grid(row=0,column=1,sticky='w')
     lbl2.grid(row=1,column=0)
     lbl3.grid(row=2,column=0)
@@ -127,6 +140,8 @@ def Scs():
     entry1.grid(row=1,column=1,sticky='w')
     entry2.grid(row=2,column=1,sticky='w')
     o=OptionMenu(window2,option,*optionlist)
+    o["menu"].config(bd=0)
+    o["highlightthickness"]=0
     o.grid(row=3,column=0)
     btn11=Button(window2,text="Generate Random Files",command=lambda:Data.random_file.generate_file("scs"))
     btn11.grid(row=4,column=0,)
@@ -135,7 +150,7 @@ def Scs():
     btn10=Button(window2,text="Submit",command=scs_result)
     btn10.grid(row=2,column=1)
     btn2=Button(window2,text="Close Me",command=lambda:window2.destroy())
-    btn2.grid(row=5,column=1)
+    btn2.grid(row=4,column=1)
 
 
 
@@ -158,18 +173,21 @@ def edit_distance_result():
     b=entry2.get()
     r1 ="Length of Edit Distance is:" + str(src.edit_distance.edit_distance(a,b))
     w=Text(window3,height=10,width=40)
-    w.grid(row=5,column=0)
+    w.grid(row=6,column=0,sticky="s")
     w.insert(END,r1)
 
 def Edit_distance():
     global window3
     window3 = Toplevel(root)
+    window3['bg']=design
     window3.geometry("500x500")
     window3.title("Levenshtein Distance(Edit Distance)")
-    lbl = Label(window3,text="Levenshtein Distance(Edit Distance)")
+    lbl = Label(window3,text="Levenshtein Distance(Edit Distance)",fg=front,bg=design)
     lbl['font']=("Arial",20)
-    lbl2 = Label(window3,text="X:") 
-    lbl3 = Label(window3,text="Y:")
+    lbl2 = Label(window3,text="X:",fg=front,bg=design) 
+    lbl3 = Label(window3,text="Y:",fg=front,bg=design)
+    lbl2['font']=("Arial",10)
+    lbl3['font']=("Arial",10)
     lbl.grid(row=0,column=1,sticky='w')
     lbl2.grid(row=1,column=0)
     lbl3.grid(row=2,column=0)
@@ -180,6 +198,8 @@ def Edit_distance():
     entry1.grid(row=1,column=1,sticky='w')
     entry2.grid(row=2,column=1,sticky='w')
     o=OptionMenu(window3,option,*optionlist)
+    o["menu"].config(bd=0)
+    o["highlightthickness"]=0
     o.grid(row=3,column=0)
     btn11=Button(window3,text="Generate Random Files",command=lambda:Data.random_file.generate_file("edit_distance"))
     btn11.grid(row=4,column=0,)
@@ -188,7 +208,7 @@ def Edit_distance():
     btn10=Button(window3,text="Submit",command=edit_distance_result)
     btn10.grid(row=2,column=1)
     btn2=Button(window3,text="Close Me",command=lambda:window3.destroy())
-    btn2.grid(row=5,column=1)
+    btn2.grid(row=4,column=1)
 
 
 
@@ -215,23 +235,27 @@ def lis_result():
         c.append(int(line))
     r1 ="Length of Longest increasing supersequence is:" + str(src.Lis.lis(c))
     w=Text(window4,height=10,width=50)
-    w.grid(row=5,column=0)
+    w.grid(row=6,column=0,sticky="s")
     w.insert(END,r1)
 
 def Lis():
     global window4
     window4 = Toplevel(root)
+    window4['bg']=design
     window4.geometry("500x500")
     window4.title("Longest Increasing Supersequence")
-    lbl = Label(window4,text="Longest Increasing Supersequence")
+    lbl = Label(window4,text="Longest Increasing Supersequence",fg=front,bg=design)
     lbl['font']=("Arial",20)
-    lbl2 = Label(window4,text="Arr:") 
+    lbl2 = Label(window4,text="Arr:",fg=front,bg=design)
+    lbl2['font']=("Arial",10) 
     lbl.grid(row=0,column=1,sticky='w')
     lbl2.grid(row=1,column=0)
     global entry1
     entry1 = Entry(window4)
     entry1.grid(row=1,column=1,sticky='w')
     o=OptionMenu(window4,option,*optionlist)
+    o["menu"].config(bd=0)
+    o["highlightthickness"]=0
     o.grid(row=3,column=0)
     btn11=Button(window4,text="Generate Random Files",command=lambda:Data.random_file.generate_file_1("lis"))
     btn11.grid(row=4,column=0,)
@@ -240,7 +264,7 @@ def Lis():
     btn10=Button(window4,text="Submit",command=lis_result)
     btn10.grid(row=2,column=1)
     btn2=Button(window4,text="Close Me",command=lambda:window4.destroy())
-    btn2.grid(row=5,column=1)
+    btn2.grid(row=4,column=1)
 
 def get_mcm():
     entry1.delete(0,'end')
@@ -268,7 +292,7 @@ def mcm_result():
     r1 ="Optimal Parenthesization is:" + str(src.mcm.matrixChainOrderPar(m,j-1))
     r2 = "Minimum Cost is :"+ str(src.mcm.matrixChainOrderCost(c))
     w=Text(window5,height=10,width=50)
-    w.grid(row=5,column=0)
+    w.grid(row=6,column=0,sticky="s")
     w.insert(END,r1)
     w.insert(END,'\n')
     w.insert(END,r2)
@@ -276,17 +300,21 @@ def mcm_result():
 def Mcm():
     global window5
     window5 = Toplevel(root)
+    window5['bg']=design
     window5.geometry("500x500")
     window5.title("Matrix Chain Multipllication")
-    lbl = Label(window5,text="Matrix Chain Multiplication")
+    lbl = Label(window5,text="Matrix Chain Multiplication",fg=front,bg=design)
     lbl['font']=("Arial",20)
-    lbl2 = Label(window5,text="Arr:") 
-    lbl.grid(row=0,column=1,sticky='w')
+    lbl2 = Label(window5,text="Arr:",fg=front,bg=design)
+    lbl2['font']=("Arial",10) 
+    lbl.grid(row=0,column=1,sticky='w',fg=front,bg=design)
     lbl2.grid(row=1,column=0)
     global entry1
     entry1 = Entry(window5)
     entry1.grid(row=1,column=1,sticky='w')
     o=OptionMenu(window5,option,*optionlist)
+    o["menu"].config(bd=0)
+    o["highlightthickness"]=0
     o.grid(row=3,column=0)
     btn11=Button(window5,text="Generate Random Files",command=lambda:Data.random_file.generate_file_1("mcm"))
     btn11.grid(row=4,column=0,)
@@ -295,7 +323,7 @@ def Mcm():
     btn10=Button(window5,text="Submit",command=mcm_result)
     btn10.grid(row=2,column=1)
     btn2=Button(window5,text="Close Me",command=lambda:window5.destroy())
-    btn2.grid(row=5,column=1)
+    btn2.grid(row=4,column=1)
 
 
 
@@ -353,13 +381,17 @@ def knapsack_result():
 def Knapsack():
     global window6
     window6 = Toplevel(root)
+    window6['bg']=design
     window6.geometry("500x500")
     window6.title("0/1 Knapsack")
-    lbl = Label(window6,text="0/1 Knapsack")
+    lbl = Label(window6,text="0/1 Knapsack",fg=front,bg=design)
     lbl['font']=("Arial",20)
-    lbl2 = Label(window6,text="Values:")
-    lbl3 = Label(window6,text="Weights:") 
-    lbl4 = Label(window6,text="Weight Limit:")
+    lbl2 = Label(window6,text="Values:",fg=front,bg=design)
+    lbl3 = Label(window6,text="Weights:",fg=front,bg=design) 
+    lbl4 = Label(window6,text="Weight Limit:",fg=front,bg=design)
+    lbl2['font']=("Arial",10)
+    lbl3['font']=("Arial",10)
+    lbl4['font']=("Arial",10)
     lbl.grid(row=0,column=1,sticky='w')
     lbl2.grid(row=1,column=0)
     lbl3.grid(row=2,column=0)
@@ -376,6 +408,8 @@ def Knapsack():
     
     
     o=OptionMenu(window6,option,*optionlist)
+    o["menu"].config(bd=0)
+    o["highlightthickness"]=0
     o.grid(row=4,column=0)
     btn11=Button(window6,text="Generate Random Files",command=lambda:Data.random_file.generate_file_2("knapsack"))
     btn11.grid(row=5,column=0,)
@@ -411,23 +445,27 @@ def partition_result():
         c.append(int(line))
     r1 ="Can be Partitioned ? :" + str(src.Partition.findPartition(c))
     w=Text(window7,height=10,width=50)
-    w.grid(row=5,column=0)
+    w.grid(row=6,column=0,sticky="s")
     w.insert(END,r1)
 
 def Partition():
     global window7
     window7 = Toplevel(root)
+    window7['bg']=design
     window7.geometry("500x500")
     window7.title("Partition Problem")
-    lbl = Label(window7,text="Partition Problem")
+    lbl = Label(window7,text="Partition Problem",fg=front,bg=design)
     lbl['font']=("Arial",20)
-    lbl2 = Label(window7,text="Arr:") 
+    lbl2 = Label(window7,text="Arr:",fg=front,bg=design)
+    lbl2['font']=("Arial",10) 
     lbl.grid(row=0,column=1,sticky='w')
     lbl2.grid(row=1,column=0)
     global entry1
     entry1 = Entry(window7)
     entry1.grid(row=1,column=1,sticky='w')
     o=OptionMenu(window7,option,*optionlist)
+    o["menu"].config(bd=0)
+    o["highlightthickness"]=0
     o.grid(row=3,column=0)
     btn11=Button(window7,text="Generate Random Files",command=lambda:Data.random_file.generate_file_1("partition"))
     btn11.grid(row=4,column=0,)
@@ -436,7 +474,7 @@ def Partition():
     btn10=Button(window7,text="Submit",command=partition_result)
     btn10.grid(row=2,column=1)
     btn2=Button(window7,text="Close Me",command=lambda:window7.destroy())
-    btn2.grid(row=5,column=1)
+    btn2.grid(row=4,column=1)
 
 
 
@@ -479,18 +517,21 @@ def rodcut_result():
     e=[i for i in range(1,len(c)+1)] 
     r1 ="Maximum Obtainable Value:" + str(src.rodcut.cutRod(c,d,e))
     w=Text(window8,height=10,width=50)
-    w.grid(row=5,column=0)
+    w.grid(row=6,column=0,sticky="s")
     w.insert(END,r1)
 
 def Rodcut():
     global window8
     window8 = Toplevel(root)
+    window8['bg']=design
     window8.geometry("500x500")
     window8.title("Rod Cut Problem")
-    lbl = Label(window8,text="Rod Cut Problem")
+    lbl = Label(window8,text="Rod Cut Problem",fg=front,bg=design)
     lbl['font']=("Arial",20)
-    lbl2 = Label(window8,text="Price:")
-    lbl3 = Label(window8,text="Size:") 
+    lbl2 = Label(window8,text="Price:",fg=front,bg=design)
+    lbl3 = Label(window8,text="Size:",fg=front,bg=design)
+    lbl2['font']=("Arial",10)
+    lbl3['font']=("Arial",10) 
     lbl.grid(row=0,column=1,sticky='w')
     lbl2.grid(row=1,column=0)
     lbl3.grid(row=2,column=0)
@@ -502,6 +543,8 @@ def Rodcut():
     entry2.grid(row=2,column=1,sticky='w')
     
     o=OptionMenu(window8,option,*optionlist)
+    o["menu"].config(bd=0)
+    o["highlightthickness"]=0
     o.grid(row=4,column=0)
     btn11=Button(window8,text="Generate Random Files",command=lambda:Data.random_file.generate_file_2("rodcut"))
     btn11.grid(row=5,column=0,)
@@ -510,7 +553,7 @@ def Rodcut():
     btn10=Button(window8,text="Submit",command=rodcut_result)
     btn10.grid(row=2,column=2)
     btn2=Button(window8,text="Close Me",command=lambda:window8.destroy())
-    btn2.grid(row=6,column=1)
+    btn2.grid(row=5,column=1)
 
 
 
@@ -544,18 +587,21 @@ def coin_change_result():
     d=int(d)
     r1 ="Count of Coins is:" + str(src.Coin_change.count(c,d))
     w=Text(window9,height=10,width=50)
-    w.grid(row=5,column=0)
+    w.grid(row=6,column=0,sticky="s")
     w.insert(END,r1)
 
 def coin_change():
     global window9
     window9 = Toplevel(root)
+    window9['bg']=design
     window9.geometry("500x500")
     window9.title("Coin Change Problem")
-    lbl = Label(window9,text="Coin Change Problem")
+    lbl = Label(window9,text="Coin Change Problem",fg=front,bg=design)
     lbl['font']=("Arial",20)
-    lbl2 = Label(window9,text="Arr:") 
-    lbl3 = Label(window9,text="Change:")
+    lbl2 = Label(window9,text="Arr:",fg=front,bg=design) 
+    lbl3 = Label(window9,text="Change:",fg=front,bg=design)
+    lbl2['font']=("Arial",10)
+    lbl3['font']=("Arial",10)
     lbl.grid(row=0,column=1,sticky='w')
     lbl2.grid(row=1,column=0)
     lbl3.grid(row=2,column=0)
@@ -566,6 +612,8 @@ def coin_change():
     entry1.grid(row=1,column=1,sticky='w')
     entry2.grid(row=2,column=1,sticky='w')
     o=OptionMenu(window9,option,*optionlist)
+    o["menu"].config(bd=0)
+    o["highlightthickness"]=0
     o.grid(row=3,column=0)
     btn11=Button(window9,text="Generate Random Files",command=lambda:Data.random_file.generate_file_1("coin_change"))
     btn11.grid(row=4,column=0,)
@@ -574,7 +622,7 @@ def coin_change():
     btn10=Button(window9,text="Submit",command=coin_change_result)
     btn10.grid(row=2,column=2)
     btn2=Button(window9,text="Close Me",command=lambda:window9.destroy())
-    btn2.grid(row=5,column=1)
+    btn2.grid(row=4,column=1)
 
 
 
@@ -605,18 +653,21 @@ def word_break_result():
     c=c[:len(c)-1] 
     r1 ="Can Be segmented ? :" + str(src.Word_break.wordBreak(c,d))
     w=Text(window10,height=10,width=50)
-    w.grid(row=5,column=0)
+    w.grid(row=6,column=0,sticky="s")
     w.insert(END,r1)
 
 def Word_break():
     global window10
     window10 = Toplevel(root)
+    window10['bg']=design
     window10.geometry("500x500")
     window10.title("Word Break Problem")
-    lbl = Label(window10,text="Word Break Problem")
+    lbl = Label(window10,text="Word Break Problem",fg=front,bg=design)
     lbl['font']=("Arial",20)
-    lbl2 = Label(window10,text="Dictionary:")
-    lbl3 = Label(window10,text="String:") 
+    lbl2 = Label(window10,text="Dictionary:",fg=front,bg=design)
+    lbl3 = Label(window10,text="String:",fg=front,bg=design)
+    lbl2['font']=("Arial",10)
+    lbl3['font']=("Arial",10) 
     lbl.grid(row=0,column=1,sticky='w')
     lbl2.grid(row=1,column=0)
     lbl3.grid(row=2,column=0)
@@ -628,6 +679,8 @@ def Word_break():
     entry2.grid(row=2,column=1,sticky='w')
     
     o=OptionMenu(window10,option,*optionlist)
+    o["menu"].config(bd=0)
+    o["highlightthickness"]=0
     o.grid(row=4,column=0)
     btn11=Button(window10,text="Generate Random Files",command=lambda:Data.random_file.generate_file_3("word_break"))
     btn11.grid(row=5,column=0,)
@@ -636,7 +689,7 @@ def Word_break():
     btn10=Button(window10,text="Submit",command=word_break_result)
     btn10.grid(row=2,column=2)
     btn2=Button(window10,text="Close Me",command=lambda:window10.destroy())
-    btn2.grid(row=6,column=1)
+    btn2.grid(row=5,column=1)
 
 
 
