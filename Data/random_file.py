@@ -32,7 +32,7 @@ def generate_file(string):
     for i in range(10):
         with open("Data\\"+str(string)+"\\"+str(i)+".txt","w") as f:
             x = random_letter_generator("mohit")
-            y = random_letter_generator("mohit")
+            y = random_letter_generator("sham")
             f.write(x)
             f.write("\n")
             f.write(y)

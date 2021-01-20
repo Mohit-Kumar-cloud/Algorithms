@@ -307,7 +307,7 @@ def Mcm():
     lbl['font']=("Arial",20)
     lbl2 = Label(window5,text="Arr:",fg=front,bg=design)
     lbl2['font']=("Arial",10) 
-    lbl.grid(row=0,column=1,sticky='w',fg=front,bg=design)
+    lbl.grid(row=0,column=1,sticky='w')
     lbl2.grid(row=1,column=0)
     global entry1
     entry1 = Entry(window5)
@@ -375,7 +375,7 @@ def knapsack_result():
     g=int(g)  
     r1 ="Knapsack:" + str(src.knapsack.knapSack(g,f,c))
     w=Text(window6,height=10,width=50)
-    w.grid(row=5,column=0)
+    w.grid(row=6,column=0)
     w.insert(END,r1)
 
 def Knapsack():
