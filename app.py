@@ -650,8 +650,9 @@ def word_break_result():
     for line in b:
         c.append(line)
     d=entry2.get()
-    c=c[:len(c)-1] 
-    r1 ="Can Be segmented ? :" + str(src.Word_break.wordBreak(c,d))
+    print(c) 
+    lookup = [-1] * (len(d) + 1)
+    r1 ="Can Be segmented ? :" + str(src.Word_break.wordBreak(c,d,lookup))
     w=Text(window10,height=10,width=50)
     w.grid(row=6,column=0,sticky="s")
     w.insert(END,r1)

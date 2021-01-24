@@ -1,24 +1,33 @@
 # Function to determine if can be segmented into a space-separated
 # sequence of one or more dictionary words
-def wordBreak(dictionary, string="mohitkumar"):
+def wordBreak(dict, str, lookup):
  
-    # return true if we have reached the end of the String,
-    if not string:
+    # n stores length of current substring
+    n = len(str)
+ 
+    # return true if we have reached the end of the String
+    if n == 0:
         return True
  
-    for i in range(1, len(string) + 1):
+    # if sub-problem is seen for the first time
+    if lookup[n] == -1:
  
-        # consider all prefixes of current String
-        prefix = string[:i]
+        # mark sub-problem as seen (0 initially assuming String
+        # can't be segmented)
+        lookup[n] = 0
  
-        # return true if prefix is present in the dictionary and remaining
-        # also forms space-separated sequence of one or more
-        # dictionary words
-        if prefix in dictionary and wordBreak(dictionary, string[i:]):
-            return True
+        for i in range(1, n + 1):
+            # consider all prefixes of current String
+            prefix = str[:i]
  
-    # return false if the can't be segmented
-    return False
+            # if prefix is found in dictionary, then recur for suffix
+            if prefix in dict and wordBreak(dict, str[i:], lookup):
+                # return true if the can be segmented
+                lookup[n] = 1
+                return True
+ 
+    # return solution to current sub-problem
+    return lookup[n] == 1
  
  
 if __name__ == '__main__':
@@ -30,8 +39,9 @@ if __name__ == '__main__':
  
     # input String
     string = "Wordbreakproblem"
+    lookup = [-1] * (len(str) + 1)
  
-    if wordBreak(dictionary, string):
+    if wordBreak(dictionary, string,lookup):
         print("String can be segmented")
     else:
         print("String can't be segmented")
